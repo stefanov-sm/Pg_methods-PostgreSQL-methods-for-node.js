@@ -61,10 +61,7 @@ let db_gw = (new Pg_methods(client))
 ```
 ## Invoking SQL methods
 ```js
-let res_a = await db_gw.the_first_method.run(10),
-    res_b = await db_gw.the_second_method.run(100, 26),
-    res_c = await db_gw.the_third_method.run(5),
-    res_d = await db_gw.alternative_method.run();
+let res = await db_gw.the_first_method.run(10);
 ```
 ## Demo script and result
 ```js
