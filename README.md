@@ -1,5 +1,5 @@
 # PostgreSQL-methods-for-node.js
-## Run PostgreSQL scripts as object methods in node.js for database-intensive applications  
+## PostgreSQL scripts as object methods in node.js for database-intensive applications  
 
 **SQL file syntax**  
 
