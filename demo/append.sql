@@ -1,6 +1,4 @@
--- STEFANVS·S·DIGITARIVS·PRIMVS·FECIT
--- This is a comment too
+-- This is a comment
 
 --! {"name": "alternative_method", "returns": "record"}
-
-SELECT 1 as num, 'one' as eng, 'edno' as bul, 'bir' as tur, $1 as amount;
+SELECT 1 as num, 'one' as eng, 'edno' as bul, 'bir' as tur, 'ANY' as amount;
