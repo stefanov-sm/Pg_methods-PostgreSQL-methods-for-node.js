@@ -22,7 +22,7 @@ function Pg_methods(pg_client, sql)
             let method_def = null;
             try {method_def = JSON.parse(line.substr(3))} catch (ignored) {};
 
-            if (method_def === null
+            if (!method_def
                 ||!(Object.keys(method_def).length == 2)
                 ||!('name' in method_def)
                 ||!('returns' in method_def)
@@ -54,7 +54,7 @@ function Pg_methods(pg_client, sql)
         }
         else
         {
-            if (method_name === null)
+            if (!method_name)
             {
                 throw new Error(`Syntax error, line ${line_number}: ${line}`);
             }
