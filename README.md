@@ -27,11 +27,11 @@ SELECT n, to_char(n, 'FMRN') rn
 SELECT 1 as num, 'one' as eng, 'edno' as bul, 'bir' as tur, 'ANY' as amount;
 ```
 Method specifiers are lines that start with `--!` folowed by JSON with exactly these mandatory attributes:
-1. `name` - specifies the method name;
-2. `returns` - specifies the method return type. Can be one of:
-   * `value` - a scalar;
-   * `record` - a JSON object representing a single record;
-   * `recordset` - a JSON array of objects.  
+1. `"name"` - specifies the method name as a valid K&R identifier;
+2. `"returns"` - specifies the method return type. Can be one of:
+   * `"value"` - a scalar;
+   * `"record"` - a JSON object representing a single record;
+   * `"recordset"` - a JSON array of objects.  
 
 **Note:** Pg_methods uses [prepared statements](https://node-postgres.com/features/queries#prepared-statements).  
 Queries can be of any length and complexity. Empty lines and leading/trailing whitespaces are ignored.  
