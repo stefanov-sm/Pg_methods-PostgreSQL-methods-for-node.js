@@ -22,7 +22,7 @@ function Pg_methods(pg_client, sql)
             let method_def = null;
             try {method_def = JSON.parse(line.substr(3))} catch (ignored) {};
 
-            if (method_def == null
+            if (method_def === null
                 ||!(Object.keys(method_def).length == 2)
                 ||!('name' in method_def)
                 ||!('returns' in method_def)
@@ -34,7 +34,7 @@ function Pg_methods(pg_client, sql)
 
             method_name = method_def.name;
             this[method_name] = {query_object: {name:method_name, text:'', values:[], returns:method_def.returns}};
-            if (method_def.returns == 'value') this[method_name].query_object.rowMode = 'array';
+            if (method_def.returns === 'value') this[method_name].query_object.rowMode = 'array';
 
             this[method_name].run = async function()
             {
@@ -54,7 +54,7 @@ function Pg_methods(pg_client, sql)
         }
         else
         {
-            if (method_name == null)
+            if (method_name === null)
             {
                 throw new Error(`Syntax error, line ${line_number}: ${line}`);
             }
