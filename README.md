@@ -1,7 +1,7 @@
 # PostgreSQL-methods-for-node.js
-## PostgreSQL scripts as object methods in node.js for database-intensive applications  
+**PostgreSQL scripts as object methods in node.js for database-intensive applications**  
 
-**SQL file syntax**  
+## SQL file syntax
 
 Example - four trivial SQL queries with method specifiers.
 ```sql
@@ -33,15 +33,16 @@ Method specifiers are lines that start with `--!` folowed by JSON with exactly t
    * `record` - a JSON object representing a single record;
    * `recordset` - a JSON array of objects.  
 
-**Note:** Pg_methods uses [prepared statements](https://node-postgres.com/features/queries#prepared-statements). Queries can be of any length and complexity. Empty lines and leading/trailing whitespaces are ignored.  
+**Note:** Pg_methods uses [prepared statements](https://node-postgres.com/features/queries#prepared-statements).  
+Queries can be of any length and complexity. Empty lines and leading/trailing whitespaces are ignored.  
 
 
-**Building of the database gateway object**  
+## Building the database gateway object  
 ```js
 import pgmethods from './pg_methods.js';
 let db_gw = new Pg_methods(client);
 ```
-**Importing SQL files**  
+## Importing SQL files  
 - A single SQL files can be imported by the constructor
 ```js
 let db_gw = new Pg_methods(client, fs.readFileSync(filename));
@@ -58,14 +59,14 @@ let db_gw = (new Pg_methods(client))
             .sql_import(fs.readFileSync(filename))
             .sql_import(fs.readFileSync(another_filename));
 ```
-**Invoking SQL methods**
+## Invoking SQL methods
 ```js
 let res_a = await db_gw.the_first_method.run(10),
     res_b = await db_gw.the_second_method.run(100, 26),
     res_c = await db_gw.the_third_method.run(5),
     res_d = await db_gw.alternative_method.run();
 ```
-**Demo script and result**
+## Demo script and result
 ```js
 const filename = 'proba.sql', another_filename = 'append.sql',
       connectionString = 'postgresql://*****:*****:5432/postgres';
