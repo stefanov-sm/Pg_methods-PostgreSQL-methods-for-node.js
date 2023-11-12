@@ -40,16 +40,16 @@ Queries can be of any length and complexity. Comments, empty lines and leading/t
 ## Building the database gateway object  
 ```js
 import pgmethods from './pg_methods.js';
-let db_gw = new Pg_methods(client);
+let db_gw = new pgmethods.Pg_methods(client);
 ```
 ## Importing SQL files  
 - A single SQL files can be imported by the constructor
 ```js
-let db_gw = new Pg_methods(client, fs.readFileSync(filename));
+let db_gw = new pgmethods.Pg_methods(client, fs.readFileSync(filename));
 ```
 - SQL files can be imported using `sql_import` method
 ```js
-let db_gw = new Pg_methods(client);
+let db_gw = new pgmethods.Pg_methods(client);
 db_gw.sql_import(fs.readFileSync(filename));
 db_gw.sql_import(fs.readFileSync(another_filename));
 ```
