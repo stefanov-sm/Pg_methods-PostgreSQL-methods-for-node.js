@@ -50,7 +50,7 @@ function Pg_methods(pg_client, sql)
                     case 'value':
                         return res.rows[0][0];
                 }
-            };
+            }
         }
         else
         {
