@@ -38,7 +38,8 @@ function Pg_methods(pg_client, sql)
 
             this[mName].run = async function()
             {
-                this.query_object.values = Object.values(arguments);
+                let query_object = {...this.query_object};
+                query_object.values = Object.values(arguments);
                 const res = await pg_client.query(this.query_object);
                 switch (this.query_object.returns)
                 {
