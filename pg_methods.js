@@ -3,40 +3,40 @@
     S. Stefanov, Nov-2023
 */
 
-const COMMENT_RX = /^--[^!]|^$/, METHOD_RX = /^\--!/, CRLF = '\r\n',
+const COMMENT_RX = /^--[^!]|^$/, METHOD_RX = /^\--!/, NEWLINE = '\r\n',
       RETTYPE = ['recordset','record','value'], KRID_RX = /^[_a-z]\w+$/i,
-      LINEEND_RX = /[\r\n]+/;
+      NEWLINE_RX = /[\r\n]+/;
 
 function Pg_methods(pg_client, sql)
 {
  this.sql_import = function(sql)
  {
-    const lines = (sql + '').split(LINEEND_RX).map(s => s.trim());
-    let line_number = 0, mName = null;
+    const lines = (sql + '').split(NEWLINE_RX).map(s => s.trim());
+    let line_number = 0, method_name = null;
     for (const line of lines)
     {
         line_number++;
         if (line.match(COMMENT_RX)) continue;
         if (line.match(METHOD_RX))
         {
-            let mDef = null;
-            try {mDef = JSON.parse(line.substr(3))} catch (ignored) {};
+            let method_def = null;
+            try {method_def = JSON.parse(line.substr(3))} catch (ignored) {};
 
-            if (mDef == null
-                ||!(Object.keys(mDef).length == 2)
-                ||!('name' in mDef)
-                ||!('returns' in mDef)
-                ||!mDef.name.match(KRID_RX)
-                ||!RETTYPE.includes(mDef.returns))
+            if (method_def == null
+                ||!(Object.keys(method_def).length == 2)
+                ||!('name' in method_def)
+                ||!('returns' in method_def)
+                ||!method_def.name.match(KRID_RX)
+                ||!RETTYPE.includes(method_def.returns))
             {
                 throw new Error(`Method definition syntax error, line ${line_number}: ${line}`);
             }
 
-            mName = mDef.name;
-            this[mName] = {query_object: {name:mName, text:'', values:[], returns:mDef.returns}};
-            if (mDef.returns == 'value') this[mName].query_object.rowMode = 'array';
+            method_name = method_def.name;
+            this[method_name] = {query_object: {name:method_name, text:'', values:[], returns:method_def.returns}};
+            if (method_def.returns == 'value') this[method_name].query_object.rowMode = 'array';
 
-            this[mName].run = async function()
+            this[method_name].run = async function()
             {
                 let query_object = {...this.query_object};
                 query_object.values = Object.values(arguments);
@@ -54,16 +54,16 @@ function Pg_methods(pg_client, sql)
         }
         else
         {
-            if (mName == null)
+            if (method_name == null)
             {
                 throw new Error(`Syntax error, line ${line_number}: ${line}`);
             }
-            this[mName].query_object.text += (line + CRLF);
+            this[method_name].query_object.text += (line + NEWLINE);
         }
     }
     return this;
  }
- if (sql != null) this.sql_import(sql);
+ if (sql) this.sql_import(sql);
 }
 module.exports =
 {
