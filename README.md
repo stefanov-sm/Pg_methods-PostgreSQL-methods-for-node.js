@@ -92,7 +92,7 @@ try
     console.log(res_c);
     console.log(res_d);
 }
-finally { await client.end(); }
+finally { await client.end(); } // Make sure to not leak database connections
 ```
 ![image](https://github.com/stefanov-sm/PostgreSQL-methods-for-node.js/assets/26185804/47106fa5-8f73-4691-a129-cac8659a1f08)
 
