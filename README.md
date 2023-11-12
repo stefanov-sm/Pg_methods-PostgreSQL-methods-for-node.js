@@ -34,7 +34,7 @@ Method specifiers are lines that start with `--!` folowed by JSON with exactly t
    * `"recordset"` - a JSON array of objects.  
 
 **Note:** Pg_methods uses [prepared statements](https://node-postgres.com/features/queries#prepared-statements).  
-Queries can be of any length and complexity. Empty lines and leading/trailing whitespaces are ignored.  
+Queries can be of any length and complexity. Comments, empty lines and leading/trailing whitespaces are ignored.  
 
 
 ## Building the database gateway object  
