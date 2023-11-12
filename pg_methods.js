@@ -3,12 +3,12 @@
     S. Stefanov, Nov-2023
 */
 
-function Pg_methods(pg_client, sql)
-{
- const COMMENT_RX = /^--[^!]|^$/, METHOD_RX = /^\--!/, CRLF = '\r\n',
+const COMMENT_RX = /^--[^!]|^$/, METHOD_RX = /^\--!/, CRLF = '\r\n',
       RETTYPE = ['recordset','record','value'], KRID_RX = /^[_a-z]\w+$/i,
       LINEEND_RX = /[\r\n]+/;
 
+function Pg_methods(pg_client, sql)
+{
  this.sql_import = function(sql)
  {
     const lines = (sql + '').split(LINEEND_RX).map(s => s.trim());
@@ -22,8 +22,15 @@ function Pg_methods(pg_client, sql)
             let mDef = null;
             try {mDef = JSON.parse(line.substr(3))} catch (ignored) {};
 
-            if (mDef == null||Object.keys(mDef).length != 2||!mDef.name.match(KRID_RX)||!RETTYPE.includes(mDef.returns))
+            if (mDef == null
+                ||!(Object.keys(mDef).length == 2)
+                ||!('name' in mDef)
+                ||!('returns' in mDef)
+                ||!mDef.name.match(KRID_RX)
+                ||!RETTYPE.includes(mDef.returns))
             {
+                throw new Error(`Method definition syntax error, line ${line_number}: ${line}`);
+            }            {
                 throw new Error(`Method definition syntax error, line ${line_number}: ${line}`);
             }
 
@@ -39,10 +46,8 @@ function Pg_methods(pg_client, sql)
                 {
                     case 'recordset':
                         return res.rows;
-                        break;
                     case 'record':
                         return res.rows[0];
-                        break;
                     case 'value':
                         return res.rows[0][0];
                 }
