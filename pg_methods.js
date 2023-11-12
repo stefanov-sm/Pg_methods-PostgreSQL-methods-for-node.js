@@ -30,8 +30,6 @@ function Pg_methods(pg_client, sql)
                 ||!RETTYPE.includes(mDef.returns))
             {
                 throw new Error(`Method definition syntax error, line ${line_number}: ${line}`);
-            }            {
-                throw new Error(`Method definition syntax error, line ${line_number}: ${line}`);
             }
 
             mName = mDef.name;
