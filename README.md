@@ -3,7 +3,7 @@
 
 **SQL file syntax**  
 
-Here is an example - four trivial SQL queries with method specifiers.
+Example - four trivial SQL queries with method specifiers.
 ```sql
 -- A query that yields a single record
 --! {"name": "the_first_method", "returns": "record"}
