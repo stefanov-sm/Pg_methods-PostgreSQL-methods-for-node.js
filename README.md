@@ -33,7 +33,7 @@ Method specifiers are lines that start with `--!` folowed by JSON with exactly t
    * `record` - a JSON object representing a single record;
    * `recordset` - a JSON array of objects.  
 
-Queries can be of any length and complexity.  
+Queries can be of any length and complexity. Empty lines and leading/trailing whitespaces are ignored.  
 
 **Building of the database gateway object**  
 ```js
