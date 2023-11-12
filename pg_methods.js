@@ -43,12 +43,9 @@ function Pg_methods(pg_client, sql)
                 const res = await pg_client.query(query_object);
                 switch (this.query_object.returns)
                 {
-                    case 'recordset':
-                        return res.rows;
-                    case 'record':
-                        return res.rows[0];
-                    case 'value':
-                        return res.rows[0][0];
+                    case 'recordset': return res.rows;
+                    case 'record':    return res.rows[0];
+                    case 'value':     return res.rows[0][0];
                 }
             }
         }
