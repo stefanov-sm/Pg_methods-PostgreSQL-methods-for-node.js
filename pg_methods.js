@@ -40,7 +40,7 @@ function Pg_methods(pg_client, sql)
             {
                 let query_object = {...this.query_object};
                 query_object.values = Object.values(arguments);
-                const res = await pg_client.query(this.query_object);
+                const res = await pg_client.query(query_object);
                 switch (this.query_object.returns)
                 {
                     case 'recordset':
