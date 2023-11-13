@@ -28,7 +28,7 @@ function Pg_methods(pg_client, sql)
                 ||!method_def.name.match(IDENT_RX)
                 ||!RETURN_TYPE.includes(method_def.returns))
             {
-                throw new Error(`Method definition syntax error, line ${line_number}: ${line}`);
+                throw new Error(`Method definition error, line ${line_number}: ${line}`);
             }
 
             method_name = method_def.name;
