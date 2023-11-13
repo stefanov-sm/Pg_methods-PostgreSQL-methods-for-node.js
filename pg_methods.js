@@ -4,7 +4,7 @@
 */
 
 const COMMENT_RX = /^--[^!]|^$/, METHOD_RX = /^\--!/, IDENT_RX = /^[_a-z]\w{0,62}$/i,
-      RETURN_TYPE = ['recordset','record','value'], NEWLINE = '\n';
+      RETURN_TYPE = ['recordset', 'record', 'value'], NEWLINE = '\n';
 
 function Pg_methods(pg_client, sql)
 {
