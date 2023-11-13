@@ -97,6 +97,7 @@ finally { await client.end(); } // Make sure to not leak database connections
 ![image](https://github.com/stefanov-sm/PostgreSQL-methods-for-node.js/assets/26185804/47106fa5-8f73-4691-a129-cac8659a1f08)
 
 ## Database gateway object
-![image](https://github.com/stefanov-sm/node.js-Pg_methods/assets/26185804/89ae03bb-610e-46fe-94db-db3bfa069d17)
+![image](https://github.com/stefanov-sm/node.js-Pg_methods/assets/26185804/e089afc6-af50-407b-a851-01042a72d1eb)
+
 
 
