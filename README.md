@@ -27,7 +27,7 @@ SELECT n, to_char(n, 'FMRN') rn
 SELECT 1 as num, 'one' as eng, 'edno' as bul, 'bir' as tur, 'ANY' as amount;
 ```
 Method specifiers are lines that start with `--!` folowed by JSON with exactly these mandatory attributes:
-1. `"name"` - specifies the method name as a valid K&R identifier;
+1. `"name"` - specifies the method name as a valid identifier, up to 63 characters;
 2. `"returns"` - specifies the method return type. Can be one of:
    * `"value"` - a scalar;
    * `"record"` - a JSON object representing a single record;
