@@ -43,7 +43,7 @@ import pgmethods from './pg_methods.js';
 let db_gw = new pgmethods.Pg_methods(client);
 ```
 ## Importing SQL files  
-- A single SQL files can be imported by the constructor
+- A single SQL file can be imported by the constructor
 ```js
 let db_gw = new pgmethods.Pg_methods(client, fs.readFileSync(filename));
 ```
