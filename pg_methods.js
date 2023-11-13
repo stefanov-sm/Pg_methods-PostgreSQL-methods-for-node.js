@@ -32,7 +32,7 @@ function Pg_methods(pg_client, sql)
             }
 
             method_name = method_def.name;
-            this[method_name] = {query_object: {name:method_name, text:'', values:[], returns:method_def.returns}};
+            this[method_name] = {query_object: {name:method_name, text:'', values:[]}, returns:method_def.returns};
             if (method_def.returns === 'value') this[method_name].query_object.rowMode = 'array';
 
             this[method_name].run = async function()
@@ -40,7 +40,7 @@ function Pg_methods(pg_client, sql)
                 let query_object = {...this.query_object};
                 query_object.values = Object.values(arguments);
                 const res = await pg_client.query(query_object);
-                switch (this.query_object.returns)
+                switch (this.returns)
                 {
                     case 'recordset': return res.rows;
                     case 'record':    return res.rows[0];
