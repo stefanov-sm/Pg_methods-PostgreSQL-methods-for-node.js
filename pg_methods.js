@@ -3,15 +3,14 @@
     S. Stefanov, Nov-2023
 */
 
-const COMMENT_RX = /^--[^!]|^$/, METHOD_RX = /^\--!/, NEWLINE = '\r\n',
-      RETTYPE = ['recordset','record','value'], KRID_RX = /^[_a-z]\w+$/i,
-      NEWLINE_RX = /[\r\n]+/;
+const COMMENT_RX = /^--[^!]|^$/, METHOD_RX = /^\--!/, IDENT_RX = /^[_a-z]\w{0,62}$/i,
+      RETURN_TYPE = ['recordset','record','value'], NEWLINE = '\n';
 
 function Pg_methods(pg_client, sql)
 {
  this.sql_import = function(sql)
  {
-    const lines = (sql + '').split(NEWLINE_RX).map(s => s.trim());
+    const lines = (sql + '').split(NEWLINE).map(s => s.trim());
     let line_number = 0, method_name = null;
     for (const line of lines)
     {
@@ -26,8 +25,8 @@ function Pg_methods(pg_client, sql)
                 ||!(Object.keys(method_def).length == 2)
                 ||!('name' in method_def)
                 ||!('returns' in method_def)
-                ||!method_def.name.match(KRID_RX)
-                ||!RETTYPE.includes(method_def.returns))
+                ||!method_def.name.match(IDENT_RX)
+                ||!RETURN_TYPE.includes(method_def.returns))
             {
                 throw new Error(`Method definition syntax error, line ${line_number}: ${line}`);
             }
