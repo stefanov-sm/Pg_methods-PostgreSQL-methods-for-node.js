@@ -1,4 +1,4 @@
-# PostgreSQL-methods-for-node.js
+# PostgreSQL methods for node.js
 **PostgreSQL scripts as object methods in node.js for database-intensive applications**  
 
 ## SQL file syntax
