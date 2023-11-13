@@ -35,10 +35,10 @@ function Pg_methods(pg_client, sql)
             this[method_name] = {query_object: {name:method_name, text:'', values:[]}, returns:method_def.returns};
             if (method_def.returns === 'value') this[method_name].query_object.rowMode = 'array';
 
-            this[method_name].run = async function()
+            this[method_name].run = async function(...args)
             {
                 let query_object = {...this.query_object};
-                query_object.values = Object.values(arguments);
+                query_object.values = args;
                 const res = await pg_client.query(query_object);
                 switch (this.returns)
                 {
