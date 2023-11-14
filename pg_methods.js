@@ -9,7 +9,7 @@ const COMMENT_RX = /^--[^!]|^$/,
     RETURN_TYPE = ['recordset', 'record', 'value'],
     NEWLINE = '\n';
 
-function PgMethods(pg_client, sql)
+export default function PgMethods(pg_client, sql)
 {
   async function run(...args)
   {
@@ -63,7 +63,3 @@ function PgMethods(pg_client, sql)
   }
   if (sql) this.sql_import(sql);
 }
-module.exports =
-{
-  PgMethods
-};
