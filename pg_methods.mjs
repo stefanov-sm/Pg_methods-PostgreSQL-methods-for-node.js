@@ -24,7 +24,7 @@ export default function PgMethods(pg_client, sql)
 
   this.sql_import = function(sql)
   {
-    const lines = (sql + '').split(NEWLINE).map(s => s.trim());
+    const lines = sql.toString('utf8').split(NEWLINE).map(s => s.trim());
     let line_number = 0, method_name = null;
     for (const line of lines)
     {
