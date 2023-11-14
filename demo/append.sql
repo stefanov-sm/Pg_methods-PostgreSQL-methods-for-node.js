@@ -9,7 +9,7 @@ $body$
   declare
     log_date text;
   begin
-  	log_date := to_char(current_date - 1, 'dd-Mon-yyyy');
+    log_date := to_char(current_date - 1, 'dd-Mon-yyyy');
     raise log 'Humpty Dumpty sat on a wall yesterday, %', log_date;
   end;
 $body$;
