@@ -31,7 +31,8 @@ Method specifiers are lines that start with `--!` folowed by JSON with exactly t
 2. `"returns"` - specifies the method return type. Can be one of:
    * `"value"` - a scalar;
    * `"record"` - a JSON object representing a single record;
-   * `"recordset"` - a JSON array of objects.  
+   * `"recordset"` - a JSON array of objects;  
+   * `"none"`
 
 Queries can be of any length and complexity. Comments, empty lines and leading/trailing whitespaces are ignored.  
 
