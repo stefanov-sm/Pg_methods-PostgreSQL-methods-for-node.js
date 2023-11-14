@@ -35,7 +35,11 @@ Method specifiers are lines that start with `--!` folowed by JSON with exactly t
 
 Queries can be of any length and complexity. Comments, empty lines and leading/trailing whitespaces are ignored.  
 
-**Important notes:** SQL files _must_ be UTF-8 encoded. PgMethods uses [prepared statements](https://node-postgres.com/features/queries#prepared-statements).  
+> [!NOTE]
+> PgMethods uses [prepared statements](https://node-postgres.com/features/queries#prepared-statements).
+ 
+> [!IMPORTANT]
+> SQL files must be UTF-8 encoded.  
 
 ## Building the database gateway object  
 ```js
