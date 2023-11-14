@@ -69,34 +69,28 @@ let res = await db_gw.the_first_method.run(10);
 ```
 ## Demo script and result
 ```js
-const filename = 'proba.sql', another_filename = 'append.sql',
-      connectionString = 'postgresql://*****:*****:5432/postgres';
-
 import PgMethods from './../pg_methods.mjs';
-import postgresql from 'pg';
-import fs from 'fs';
+import pg from 'pg';
 
-const client = new postgresql.Client(connectionString);
-await client.connect();
-
+const pg_client = new pg.Client('postgresql://*****:*****@*****:5432/postgres');
+await pg_client.connect();
 try
 {
-    let db_gw = (new PgMethods(client, fs.readFileSync(filename)))
-                .sql_import(fs.readFileSync(another_filename));
-	
-    let res_a = await db_gw.the_first_method.run(10),
-        res_b = await db_gw.the_second_method.run(100, 26),
-        res_c = await db_gw.the_third_method.run(5),
-        res_d = await db_gw.alternative_method.run();
-	
-    console.log(res_a);
-    console.log(res_b);
-    console.log(res_c);
-    console.log(res_d);
+  let db_gw = new PgMethods(pg_client); 
+  db_gw.sql_import('proba.sql')
+       .sql_import('append.sql');
+  let res_a = await db_gw.the_first_method.run(10),
+      res_b = await db_gw.the_second_method.run(100, 26),
+      res_c = await db_gw.the_third_method.run(5),
+      res_d = await db_gw.alternative_method.run('Количество');
+  console.log(res_a);
+  console.log(res_b);
+  console.log(res_c);
+  console.log(res_d);
 }
-finally { await client.end(); } // protect against database connection leak
+finally { await pg_client.end(); } // protect against database connection leak
 ```
-![image](https://github.com/stefanov-sm/PostgreSQL-methods-for-node.js/assets/26185804/47106fa5-8f73-4691-a129-cac8659a1f08)
+![image](https://github.com/stefanov-sm/node.js-PgMethods/assets/26185804/c49b89b7-9cb2-4247-b5fa-d48bf9b57735)
 
 ## Database gateway object
 ![image](https://github.com/stefanov-sm/node.js-Pg_methods/assets/26185804/e089afc6-af50-407b-a851-01042a72d1eb)
