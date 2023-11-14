@@ -84,6 +84,7 @@ try
       res_b = await db_gw.the_second_method.run(100, 26),
       res_c = await db_gw.the_third_method.run(5),
       res_d = await db_gw.alternative_method.run('Количество');
+  await db_gw.anonymous_block.run();
   console.log(res_a);
   console.log(res_b);
   console.log(res_c);
