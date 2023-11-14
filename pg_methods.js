@@ -33,9 +33,9 @@ function PgMethods(pg_client, sql)
 
             method_name = method_def.name;
             if (method_def.returns !== 'value')
-            	this[method_name] = {returns:method_def.returns, query_object: {name:method_name, text:'', values:[]}};
+            	this[method_name] = {returns:method_def.returns, query_object: {name:method_name, text:''}};
             else
-            	this[method_name] = {returns:method_def.returns, query_object: {name:method_name, text:'', values:[], rowMode: 'array'}};
+            	this[method_name] = {returns:method_def.returns, query_object: {name:method_name, text:'', rowMode: 'array'}};
 
             this[method_name].run = async function(...args)
             {
