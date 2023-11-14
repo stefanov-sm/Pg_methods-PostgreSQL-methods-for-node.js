@@ -1,5 +1,5 @@
 const filename = 'proba.sql', another_filename = 'append.sql',
-	  connectionString = 'postgresql://postgres:Baba123Meca@localhost:5432/postgres';
+	  connectionString = 'postgresql://*****:*****@localhost:5432/postgres';
 
 import PgMethods from './../pg_methods.mjs';
 import postgresql from 'pg';
