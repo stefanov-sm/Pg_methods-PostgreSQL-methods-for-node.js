@@ -11,7 +11,7 @@ await client.connect();
 
 try
 {
-    let db_gw = (new pgmethods.Pg_methods(client))
+    let db_gw = (new pgmethods.PgMethods(client))
                 .sql_import(fs.readFileSync(filename))
                 .sql_import(fs.readFileSync(another_filename));
     
