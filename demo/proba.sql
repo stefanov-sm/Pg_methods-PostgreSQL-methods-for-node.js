@@ -6,7 +6,7 @@ SELECT n num, format('As text: %s', n) txt
   where n = $1;
 
 --! {"name": "the_second_method", "returns": "value"}
-SELECT to_char(n, 'FMRN') rn
+SELECT to_char(n, 'FMRN') rn 
   from generate_series(1, $1, 1) s(n)
   where n = $2;
 
