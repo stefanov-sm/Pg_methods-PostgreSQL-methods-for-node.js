@@ -1,7 +1,7 @@
 import PgMethods from './../pg_methods.mjs';
 import pg from 'pg';
 
-const pg_client = new pg.Client('postgresql://postgres:Baba123Meca@localhost:5432/postgres');
+const pg_client = new pg.Client('postgresql://*****:*****@*****:5432/postgres');
 await pg_client.connect();
 try
 {
