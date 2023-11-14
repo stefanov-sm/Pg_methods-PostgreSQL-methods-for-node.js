@@ -3,7 +3,7 @@
 const METHOD_RX = /^--!/,
       COMMENT_RX = /^--[^!]|^$/,
       IDENT_RX = /^[_a-z]\w{0,62}$/i,
-      RETURN_TYPE = ['recordset','record','value'];
+      RETURN_TYPE = ['recordset','record','value','none'];
 
 import fs from 'fs';
 export default function PgMethods(pg_client, sql_filename)
@@ -14,8 +14,9 @@ export default function PgMethods(pg_client, sql_filename)
     switch (this.returns)
     {
       case 'recordset': return res.rows;
-      case 'record':  return res.rows[0];
-      case 'value':   return res.rows[0][0];
+      case 'record':    return res.rows[0];
+      case 'value':     return res.rows[0][0];
+      case 'none':      return null;
     }
   }
 
