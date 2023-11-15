@@ -94,8 +94,5 @@ finally { await pg_client.end(); } // database connection leak protection
 ```
 ![image](https://github.com/stefanov-sm/node.js-PgMethods/assets/26185804/c49b89b7-9cb2-4247-b5fa-d48bf9b57735)
 
-## Database gateway object
-![image](https://github.com/stefanov-sm/node.js-Pg_methods/assets/26185804/e089afc6-af50-407b-a851-01042a72d1eb)
-
 
 
