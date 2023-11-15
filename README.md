@@ -73,7 +73,7 @@ let res = await db_gw.the_first_method.run(10);
 import PgMethods from './../pg_methods.mjs';
 import pg from 'pg';
 
-const pg_client = new pg.Client('postgresql://*****:*****@*****:5432/postgres');
+const pg_client = new pg.Client();  // uses environment variables
 await pg_client.connect();
 try
 {
@@ -90,7 +90,7 @@ try
   console.log(res_c);
   console.log(res_d);
 }
-finally { await pg_client.end(); } // protect against database connection leak
+finally { await pg_client.end(); } // database connection leak protection
 ```
 ![image](https://github.com/stefanov-sm/node.js-PgMethods/assets/26185804/c49b89b7-9cb2-4247-b5fa-d48bf9b57735)
 
