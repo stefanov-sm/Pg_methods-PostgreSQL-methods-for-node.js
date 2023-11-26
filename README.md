@@ -50,19 +50,18 @@ let db_gw = new PgMethods(client);
 ## Importing SQL files  
 - A single SQL file can be imported by the constructor
 ```js
-let db_gw = new PgMethods(client, fs.readFileSync(filename));
+let db_gw = new PgMethods(client,filename);
 ```
 - SQL files can be imported using `sql_import` method
 ```js
 let db_gw = new PgMethods(client);
-db_gw.sql_import(fs.readFileSync(filename));
-db_gw.sql_import(fs.readFileSync(another_filename));
+db_gw.sql_import(filename);
+db_gw.sql_import(another_filename);
 ```
 - Chained
 ```js
 let db_gw = (new PgMethods(client))
-            .sql_import(fs.readFileSync(filename))
-            .sql_import(fs.readFileSync(another_filename));
+            .sql_import(filename)            .sql_import(another_filename);
 ```
 ## Invoking SQL methods
 ```js
