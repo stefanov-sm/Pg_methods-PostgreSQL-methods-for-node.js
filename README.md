@@ -1,4 +1,4 @@
-# PostgreSQL methods for node.js
+no# PostgreSQL methods for node.js
 **PostgreSQL scripts as object methods in node.js for database-intensive applications**  
 
 ## SQL file syntax
@@ -61,7 +61,8 @@ db_gw.sql_import(another_filename);
 - Chained
 ```js
 let db_gw = (new PgMethods(client))
-            .sql_import(filename)            .sql_import(another_filename);
+            .sql_import(filename)
+            .sql_import(another_filename);
 ```
 ## Invoking SQL methods
 ```js
